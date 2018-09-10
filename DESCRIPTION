@@ -1,0 +1,17 @@
+Package: MetIMMStools
+Type: Package
+Title: MetIMMS: tools for ion mobility mass spectrometry data processing
+Version: 0.0.0.1
+Author: c(
+    person("Justin", "Zhou", email = "zhouzw@sioc.ac.cn", role = c("aut")),
+    person("Justin", "Zhou", email = "zhouzw@sioc.ac.cn", role = c("cre")))
+Maintainer: The package maintainer <zhouzw@sioc.ac.cn>
+Description: This package provides some tools for IM-MS data processing.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    readr,
+    readxl,
+    dplyr,
+    stringr

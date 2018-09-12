@@ -1,6 +1,6 @@
-Package: MetIMMStools
+Package: ImmsTools
 Type: Package
-Title: MetIMMS: tools for ion mobility mass spectrometry data processing
+Title: Some tools for ion mobility mass spectrometry data processing
 Version: 0.0.0.1
 Author: c(
     person("Justin", "Zhou", email = "zhouzw@sioc.ac.cn", role = c("aut")),

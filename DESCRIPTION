@@ -10,10 +10,10 @@ Description: This package provides some tools for IM-MS data processing.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-Imports: 
+Imports:
     readr,
     readxl,
-    dplyr,
     stringr,
-    tibble
+    tibble,
+    dplyr
 RoxygenNote: 6.0.1

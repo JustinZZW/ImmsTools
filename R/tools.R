@@ -9,7 +9,7 @@
 
 setGeneric('readMSP', function(file,
                                mode=c('standard', 'all')) {
-  devtools::use_package('dplyr')
+  # devtools::use_package('dplyr')
 
   msp.data.list <- ListDB(file)
   nr.num.pk <- grep('Num Peaks', stringr::str_to_title(msp.data.list[[1]]))

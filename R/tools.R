@@ -7,7 +7,7 @@
 
 setGeneric('readMSP', function(file) {
   msp.data.list <- ListDB(file)
-  nr.num.pk <- grep('Num Peaks', str_to_title(msp.data.list[[1]]))
+  nr.num.pk <- grep('Num Peaks', stringr::str_to_title(msp.data.list[[1]]))
   info.spec <- lapply(msp.data.list, function(msp.data) {
     info.list <- strsplit(msp.data[1:nr.num.pk], split = ': ')
     info <- do.call(cbind, info.list)

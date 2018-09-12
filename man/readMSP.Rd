@@ -4,7 +4,12 @@
 \alias{readMSP}
 \title{readMSP}
 \usage{
-readMSP(file)
+readMSP(file, mode = c("standard", "all"))
+}
+\arguments{
+\item{file}{the file name}
+
+\item{mode}{standard: extract name, mz and RT from the file, which fit for MSP data exported from QI software; all: extract all information in the file}
 }
 \value{
 A list object. info: MS1 information, including ms1, rt etc.; spec: the MS/MS spectrum

@@ -62,27 +62,6 @@ CCS_Calu_SingleField <- function(raw.data='raw data file.xlsx',
 
 
 
-# transform exact mass to mz according adduct form
-mz_transform <- function(raw.data, polarity="pos"){
-  M <- raw.data$M
-  adduct <- raw.data$Adducts
-  if (polarity=="pos") {
-    adduct.table <- adduct.table$pos
-  } else {
-    adduct.table <- adduct.table$neg
-  }
-
-  idx.adduct <- match(adduct, adduct.table$Adducts)
-
-  mz <- sapply(c(1:length(M)), function(i){
-    temp.idx <- idx.adduct[i]
-    mz <- M[i]+adduct.table$Delta[temp.idx]
-  })
-
-  output <- data.frame(raw.data, mz=mz)
-  return(output)
-}
-
 
 #' @title Cal_SingleField
 #' @description Establish calibration curve using single field method
@@ -104,6 +83,10 @@ mz_transform <- function(raw.data, polarity="pos"){
 
 Cal_SingleField <- function(polarity="pos", charge=1, Agilent.table="V1") {
   # Load data ==================================================================
+  if (!file.exists("calibration file table.xlsx")) {
+    stop("There is no calibration file for CCS calibration.")
+  }
+
   cal.table <- readxl::read_excel("calibration file table.xlsx")
   ref.table <- get_ref_table(Agilent.table = Agilent.table, polarity = polarity)
 

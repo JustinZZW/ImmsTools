@@ -67,3 +67,99 @@ setGeneric('ListDB', function(file) {
   }
   db.list
 })
+
+
+
+#' @title mz_transform
+#' @description calculate the m/z of adducts
+#' @author Zhiwei Zhou
+#' \email{zhouzw@@sioc.ac.cn}
+#' @usage
+#' \code{mz_transform(M, adduct, polarity=c('pos', 'neg'))}
+#' @param M a vector of exact mass.
+#' @param adduct a vector of adducts. These adducts need to be
+#' @param polarity 'pos' or 'neg'
+#' @param formula sdf
+#' @examples
+#' mz_transform(M = 123.2324, adduct = c('[M+H]+', '[M+Na]+'), polarity = 'pos')
+#' mz_transform(formula="C2H5OH", adduct = c('M-', '[M-H]-'), polarity = 'neg')
+
+
+# transform exact mass to mz according adduct form
+mz_transform <- function(M=NULL,
+                         adduct=NULL,
+                         formula=NULL,
+                         polarity=c("pos", 'neg')){
+
+  polarity <- match.arg(polarity)
+
+  if (all(is.null(M), is.null(formula))) {
+    stop('Please input M or formula.')
+  }
+
+
+  if (!is.null(M)) {
+    M <- as.numeric(M)
+  } else {
+    M <- Calcu_EM(formula)
+  }
+
+
+  if (polarity=="pos") {
+
+    if (is.null(adduct)) {
+      adduct <- adduct.table$pos$adduct
+    } else {
+      temp <- adduct %in% adduct.table$pos$adduct
+
+      if (sum(temp)!=length(adduct)) {
+        stop("Please check the adduct list.")
+      }
+    }
+
+    adduct.table <- adduct.table$pos
+
+  } else {
+    if (is.null(adduct)) {
+      adduct <- adduct.table$neg$adduct
+    } else {
+      temp <- adduct %in% adduct.table$neg$adduct
+
+      if (sum(temp)!=length(adduct)) {
+        stop("Please check the adduct list.")
+      }
+    }
+
+    adduct.table <- adduct.table$neg
+
+  }
+
+  idx.adduct <- match(adduct, adduct.table$adduct)
+
+  mz <- sapply(c(1:length(idx.adduct)), function(i){
+    temp.idx <- idx.adduct[i]
+    mz <- M + adduct.table$mz[temp.idx]
+  })
+
+  output <- data.frame(M=M,
+                       adduct=adduct,
+                       mz=mz,
+                       stringsAsFactors = F)
+  return(output)
+}
+
+
+#' @title Calcu_EM
+#' @description Calculate exact mass using formula
+#' @author Zhiwei Zhou
+#' \email {zhouzw@@sioc.ac.cn}
+#' @param formula
+#' @example
+#' Calcu_EM("C2H5OH")
+
+Calcu_EM <- function(formula="C2H5OH") {
+  molecule <- Rdisop::getMolecule(formula)
+  # getFormula(molecule)
+  Rdisop::getMass(molecule)
+}
+

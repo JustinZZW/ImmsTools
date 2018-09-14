@@ -15,5 +15,6 @@ Imports:
     readxl,
     stringr,
     tibble,
-    dplyr
+    dplyr,
+    Rdisop
 RoxygenNote: 6.0.1

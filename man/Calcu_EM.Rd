@@ -6,6 +6,9 @@
 \usage{
 Calcu_EM(formula = "C2H5OH")
 }
+\description{
+Calculate exact mass using formula
+}
 \author{
 Zhiwei Zhou
 \email {zhouzw@sioc.ac.cn}

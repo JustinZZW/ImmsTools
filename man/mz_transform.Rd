@@ -15,9 +15,12 @@
 
 \item{polarity}{'pos' or 'neg'}
 }
+\description{
+calculate the m/z of adducts
+}
 \examples{
 mz_transform(M = 123.2324, adduct = c('[M+H]+', '[M+Na]+'), polarity = 'pos')
-
+mz_transform(formula="C2H5OH", adduct = c('M-', '[M-H]-'), polarity = 'neg')
 }
 \author{
 Zhiwei Zhou

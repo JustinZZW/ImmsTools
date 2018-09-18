@@ -50,7 +50,7 @@ CCS_Calu_SingleField <- function(raw.data='raw data file.xlsx',
     coefficient <- c(as.numeric(TFix), as.numeric(Beta))
     names(coefficient) <- c('TFix', 'Beta')
 
-    trans.data <- mz_transform(raw.data = raw.data, polarity = polarity)
+    trans.data <- mz_transform(M = raw.data$mz, polarity = polarity)
     gama <- sqrt(trans.data$mz/(trans.data$mz+28.0061))
     CCS <- (trans.data$Arrival.time-coefficient["TFix"])/(coefficient["Beta"]/charge*gama)
   }

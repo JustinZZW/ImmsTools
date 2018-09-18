@@ -79,7 +79,7 @@ msms_plot <- function(raw.exp.spec,
            "pdf"={
              file.name <- paste(file.name,".pdf", sep = "")
              file.name <- file.path(dir.path, file.name)
-             pdf(file=file.name, width = 8, height = 4)
+             pdf(file=file.name, width = 12, height = 6)
            })
   }
 
@@ -111,7 +111,7 @@ msms_plot <- function(raw.exp.spec,
     points(x = mz[frag.annotate],
            y = int[frag.annotate],
            pch = 19,
-           cex = 0.7,
+           cex = 0.5,
            # col = "black",
            col = c(rep("dodgerblue", sum(is.matched.exp)),
                    rep("firebrick1", sum(is.matched.std))))

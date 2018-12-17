@@ -4,9 +4,9 @@
 \alias{msms_plot}
 \title{msms_plot}
 \usage{
-msms_plot(raw.exp.spec, raw.std.spec, match.result = NULL, dir.path = NULL,
-  cmp.name = NULL, is.output = c(TRUE, FALSE), pg.formate = c("png",
-  "pdf"))
+msms_plot(raw.exp.spec, raw.std.spec, match.result = NULL,
+  dir.path = NULL, cmp.name = NULL, is.output = c(TRUE, FALSE),
+  pg.formate = c("png", "pdf"))
 }
 \arguments{
 \item{raw.exp.spec}{Matrix or data frame. The experiment MS/MS spectrum. The 1st column is "mz", the 2nd column is "intensity".}

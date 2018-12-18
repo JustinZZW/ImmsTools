@@ -11,6 +11,7 @@
 #' @param charge Numeric. The charge of calibrants. Default is 1.
 #' @param Agilent.table Character. The verison of Agilent tuning mix reference table is used to establish calibration Scurve. "V1" denotes the reference table in Agilent IM-MS browser B.07.01; "V2" denotes the reference table reported by Stow et. al. Anal. Chem. 2017
 #' @return a csv table includs, m/z and CCS values etc.
+#' @export
 #' @examples
 #' CCS_Calu_SingleField(polarity="pos", charge=1, Agilent.table="V1")
 #'

@@ -6,6 +6,7 @@
 #' @param mode standard: extract name, mz and RT from the file, which fit for MSP data exported from QI software; all: extract all information in the file
 #' @return
 #' A list object. info: MS1 information, including ms1, rt etc.; spec: the MS/MS spectrum
+#' @export
 
 setGeneric('readMSP', function(file,
                                mode=c('standard', 'all')) {
@@ -80,6 +81,7 @@ setGeneric('ListDB', function(file) {
 #' @param adduct a vector of adducts. These adducts need to be
 #' @param polarity 'pos' or 'neg'
 #' @param formula sdf
+#' @export
 #' @examples
 #' mz_transform(M = 123.2324, adduct = c('[M+H]+', '[M+Na]+'), polarity = 'pos')
 #' mz_transform(formula="C2H5OH", adduct = c('M-', '[M-H]-'), polarity = 'neg')
@@ -156,6 +158,7 @@ mz_transform <- function(M=NULL,
 #' @param formula
 #' @example
 #' Calcu_EM("C2H5OH")
+#' @export
 
 Calcu_EM <- function(formula="C2H5OH") {
   molecule <- Rdisop::getMolecule(formula)

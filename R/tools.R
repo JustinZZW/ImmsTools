@@ -166,3 +166,79 @@ Calcu_EM <- function(formula="C2H5OH") {
   Rdisop::getMass(molecule)
 }
 
+
+
+#' @title impute
+#' @author Zhiwei Zhou
+#' \email{zhouzw@@sioc.ac.cn}
+#' @param raw_matrix the numeric matrix
+#' @param label the label of each row
+#' @param k please ref impute.knn. Default: 10
+#' @param rowmax please ref impute.knn. Default: 0.5
+#' @param colmax please ref impute.knn. Default: 0.8
+#' @param maxp please ref impute.knn. Default: 1500
+#' @param rng.seed please ref impute.knn. Default: 362436069
+#' @export
+
+ZZWImpute <- function(raw_matrix,
+                      label,
+                      k=10,
+                      rowmax=0.5,
+                      colmax=0.8,
+                      maxp=1500,
+                      rng.seed=362436069
+){
+  n_inf <- apply(raw_matrix, 2, function(x){
+    sum(is.infinite(x))
+  })
+
+  n_na <- apply(raw_matrix, 2, function(x){
+    temp <- is.na(x)
+    sum(temp)
+  })
+
+  n_nan <- apply(raw_matrix, 2, function(x){
+    temp <- is.nan(x)
+    sum(temp)
+  })
+
+  cat(paste0('The number of inf: ', sum(n_inf), '\n'),
+      paste0('The number of NA: ', sum(n_na), '\n'),
+      paste0('The number of NAN: ', sum(n_nan), '\n')
+  )
+
+  # if (sum(n_inf) > 0 | sum(n_na) > 0| sum(n_nan) > 0) {
+  #   stop("Inf/NA/NAN existed!\n")
+  # }
+
+  # if(exists(".Random.seed")) {rm(.Random.seed)}
+
+  result <- impute::impute.knn(as.matrix(raw_matrix),
+                               k = k,
+                               rowmax = rowmax,
+                               colmax = colmax,
+                               maxp = maxp,
+                               rng.seed = rng.seed)
+
+  result <- result[[1]]
+  result <- data.frame(name=label,
+                       result,
+                       stringsAsFactors = F)
+
+  return(result)
+}
+
+
+#' @title CalcuRsquare
+#' @description calcualte r2 for regression
+#' @author Zhiwei Zhou
+#' @param y numeric
+#' @param y.pred numeric
+#' @export
+
+setGeneric('CalcuRsquare',
+           def = function(y, y.pred){
+             result <- summary(lm(y, y.pred))$r.squared
+             return(result)
+           }
+)

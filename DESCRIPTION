@@ -1,7 +1,7 @@
 Package: ImmsTools
 Type: Package
 Title: Some tools for ion mobility mass spectrometry data processing
-Version: 0.0.0.2
+Version: 0.0.0.3
 Author: c(
     person("Justin", "Zhou", email = "zhouzw@sioc.ac.cn", role = c("aut")),
     person("Justin", "Zhou", email = "zhouzw@sioc.ac.cn", role = c("cre")))
@@ -16,5 +16,6 @@ Imports:
     tibble,
     dplyr,
     Rdisop,
-    readxl
+    readxl,
+    impute
 RoxygenNote: 6.1.0

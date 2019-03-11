@@ -2,7 +2,9 @@
 
 export(CCS_Calu_SingleField)
 export(Cal_SingleField)
+export(CalcuRsquare)
 export(Calcu_EM)
+export(ZZWImpute)
 export(extractCfmid)
 export(extractClassyFire)
 export(msms_plot)

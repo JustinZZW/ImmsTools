@@ -71,7 +71,7 @@ CCS_Calu_SingleField <- function(raw.data='raw data file.xlsx',
 #'
 #' @usage
 #' \code{Cal_SingleField(polarity="pos", charge=1, Agilent.table="V1")}
-#'
+#' @param raw.data the data.frame including following columns
 #' @param polarity Character. Ionzation polarity of experiments. Should be one of "pos" or "neg". "pos" denotes "positive mode", "neg" denotes "negative mode". Default is "pos".
 #' @param charge Numeric. The charge of calibrants. Default is 1.
 #' @param Agilent.table Character. The verison of Agilent tuning mix reference table is used to establish calibration Scurve. "V1" denotes the reference table in Agilent IM-MS browser B.07.01; "V2" denotes the reference table reported by Stow et. al. Anal. Chem. 2017
@@ -82,13 +82,20 @@ CCS_Calu_SingleField <- function(raw.data='raw data file.xlsx',
 #'
 
 
-Cal_SingleField <- function(polarity="pos", charge=1, Agilent.table="V1") {
+Cal_SingleField <- function(raw.data=NULL,
+                            polarity="pos",
+                            charge=1,
+                            Agilent.table="V1",
+                            file.name = "Single_Field_cal_result") {
   # Load data ==================================================================
-  if (!file.exists("calibration file table.xlsx")) {
-    stop("There is no calibration file for CCS calibration.")
+  if (is.null(raw.data)) {
+    if (!file.exists("calibration file table.xlsx")) {
+      stop("There is no calibration file for CCS calibration.")
+    }
+
+    cal.table <- readxl::read_excel("calibration file table.xlsx")
   }
 
-  cal.table <- readxl::read_excel("calibration file table.xlsx")
   ref.table <- get_ref_table(Agilent.table = Agilent.table, polarity = polarity)
 
   # Build calibration curve ====================================================

@@ -7,6 +7,8 @@
 \code{Cal_SingleField(polarity="pos", charge=1, Agilent.table="V1")}
 }
 \arguments{
+\item{raw.data}{the data.frame including following columns}
+
 \item{polarity}{Character. Ionzation polarity of experiments. Should be one of "pos" or "neg". "pos" denotes "positive mode", "neg" denotes "negative mode". Default is "pos".}
 
 \item{charge}{Numeric. The charge of calibrants. Default is 1.}

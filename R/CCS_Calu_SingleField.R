@@ -78,8 +78,15 @@ CCS_Calu_SingleField <- function(raw.data='raw data file.xlsx',
 #' @return "TFix" is the coefficient denoting the mobility-indenpend flight time, "Beta" is the coefficient denoting the instrument-dependent proportionality cofficient.
 #' @export
 #' @examples
-#' Cal_SingleField(polarity="pos", charge=1, Agilent.table="V1")
+#' Cal_SingleField(polarity="pos", charge=1, Agilent.table="V1", file.name = "Single_Field_cal_result")
 #'
+
+# raw.data <- readxl::read_xlsx('F:/01 MetIMMS/00 data processing/190409 metccs and lipidccs data recalibrate/MetCCS/cal_pos/20160305 CCS 100ppm cal/00 manual updated 190409/calibration file table S0001_S0100.xlsx')
+# Cal_SingleField(raw.data = raw.data,
+#                 polarity="pos",
+#                 charge=1,
+#                 Agilent.table="V2",
+#                 file.name = "Single_Field_cal_result_test")
 
 
 Cal_SingleField <- function(raw.data=NULL,
@@ -94,7 +101,7 @@ Cal_SingleField <- function(raw.data=NULL,
     }
 
     cal.table <- readxl::read_excel("calibration file table.xlsx")
-  } {
+  } else {
     cal.table <- raw.data
   }
 

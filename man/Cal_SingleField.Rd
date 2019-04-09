@@ -22,7 +22,7 @@
 Establish calibration curve using single field method
 }
 \examples{
-Cal_SingleField(polarity="pos", charge=1, Agilent.table="V1")
+Cal_SingleField(polarity="pos", charge=1, Agilent.table="V1", file.name = "Single_Field_cal_result")
 
 }
 \author{

@@ -94,6 +94,8 @@ Cal_SingleField <- function(raw.data=NULL,
     }
 
     cal.table <- readxl::read_excel("calibration file table.xlsx")
+  } {
+    cal.table <- raw.data
   }
 
   ref.table <- get_ref_table(Agilent.table = Agilent.table, polarity = polarity)

@@ -126,7 +126,7 @@ Cal_SingleField <- function(raw.data=NULL,
 
   # Output result ==============================================================
   calibration.result <- list(coefficient=reg.cal.coefficient, Condition=CalCondition, r.squred=R.squred, residuals=Residuals, model=reg.cal)
-  file.name <- paste(getwd(), "Single_Field_cal_result", sep = "/")
+  file.name <- paste(getwd(), file.name, sep = "/")
   save(calibration.result, file = file.name)
 
   return(calibration.result$coefficient)

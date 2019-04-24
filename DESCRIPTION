@@ -1,7 +1,7 @@
 Package: ImmsTools
 Type: Package
 Title: Some tools for ion mobility mass spectrometry data processing
-Version: 0.0.0.9
+Version: 0.0.0.10
 Author: c(
     person("Justin", "Zhou", email = "zhouzw@sioc.ac.cn", role = c("aut")),
     person("Justin", "Zhou", email = "zhouzw@sioc.ac.cn", role = c("cre")))

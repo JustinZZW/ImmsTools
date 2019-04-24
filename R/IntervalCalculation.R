@@ -72,7 +72,7 @@ setGeneric(name = 'CredParaSetCalcu',
              mean_y <- mean(fit_result$y)
              sum_error_x_square <- sum(((fit_result$x)^b-mean_x)^2)
              sum_error_y_square <- sum((fit_result$y-mean_y)^2)
-             sigma_square <- (sum_error_y_square - sum(((fit_result$x)^b-mean_x)*fit_result$y)*a)/(n-2)
+             sigma_square <- (sum_error_y_square - a*sum(((fit_result$x)^b-mean_x)*fit_result$y))/(n-2)
              sigma <- sigma_square^0.5
 
              result <- list(a=a,

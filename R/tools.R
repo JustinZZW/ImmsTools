@@ -7,11 +7,14 @@
 #' @return
 #' A list object. info: MS1 information, including ms1, rt etc.; spec: the MS/MS spectrum
 #' @export
+#' @examples
+#' test <- readMSP(file = 'F:/01 MetIMMS/00 data processing/190515 external validation msms data extraction/zhumetlib_validation_pos_20v_190520.msp', mode = 'all')
 
 setGeneric('readMSP', function(file,
                                mode=c('standard', 'all')) {
   # devtools::use_package('dplyr')
 
+  mode <- match.arg(mode)
   msp.data.list <- ListDB(file)
   nr.num.pk <- grep('Num Peaks', stringr::str_to_title(msp.data.list[[1]]))
   info.spec <- lapply(msp.data.list, function(msp.data) {

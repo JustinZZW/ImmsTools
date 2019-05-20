@@ -17,6 +17,9 @@ A list object. info: MS1 information, including ms1, rt etc.; spec: the MS/MS sp
 \description{
 read MSP spectra files
 }
+\examples{
+test <- readMSP(file = 'F:/01 MetIMMS/00 data processing/190515 external validation msms data extraction/zhumetlib_validation_pos_20v_190520.msp', mode = 'all')
+}
 \author{
 Zhiwei Zhou
 \email{zhouzw@sioc.ac.cn}

@@ -181,7 +181,7 @@ setGeneric(name = 'GetMsMs',
 #'                 smiles = external_data_pos$smiles[i],
 #'                 inchikey = external_data_pos$inchikey[i],
 #'                 inchikey1 = external_data_pos$inchikey1[i],
-#'                 formua = external_data_pos$formula[i],
+#'                 formula = external_data_pos$formula[i],
 #'                 polarity = 'Positive',
 #'                 ce = '20',
 #'                 ccs = external_data_pos$CCS[i],
@@ -203,7 +203,7 @@ setGeneric(name = 'GenerateMSP',
              smiles=NULL,
              inchikey=NULL,
              inchikey1=NULL,
-             formua=NULL,
+             formula=NULL,
              polarity=c('Positive', 'Negative'),
              ce=NULL,
              rt=NULL,
@@ -276,7 +276,7 @@ setGeneric(name = 'GenerateMSP',
              }
 
              if (!is.null(formula)) {
-               cat('FORMULA: ', formua, '\n', sep = '', file = file_result)
+               cat('FORMULA: ', formula, '\n', sep = '', file = file_result)
              }
 
              if (!is.null(polarity)) {

@@ -7,7 +7,7 @@
 GenerateMSP(file_name = "./test.msp", cmp_name = NULL,
   precusormz = NULL, adduct = NULL, instrument_type = NULL,
   instrument = NULL, smiles = NULL, inchikey = NULL,
-  inchikey1 = NULL, formua = NULL, polarity = c("Positive",
+  inchikey1 = NULL, formula = NULL, polarity = c("Positive",
   "Negative"), ce = NULL, rt = NULL, ccs = NULL, zhulib_id = NULL,
   kegg_id = NULL, hmdb_id = NULL, pubchem_id = NULL, links = "",
   comment = "", spec = NULL)
@@ -31,6 +31,8 @@ GenerateMSP(file_name = "./test.msp", cmp_name = NULL,
 
 \item{inchikey1}{Default: NULL}
 
+\item{formula}{Default: NULL}
+
 \item{polarity}{'Positive' or 'Negative'}
 
 \item{ce}{Default: NULL}
@@ -52,8 +54,6 @@ GenerateMSP(file_name = "./test.msp", cmp_name = NULL,
 \item{comment}{Default: ''}
 
 \item{spec}{Required. It should be in a dataframe, 1st: "mz", 2nd: "intensity"}
-
-\item{formula}{Default: NULL}
 }
 \description{
 Convert MS/MS spectra to MSP files
